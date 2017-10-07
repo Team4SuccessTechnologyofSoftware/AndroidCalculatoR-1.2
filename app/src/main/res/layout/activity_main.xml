@@ -4,32 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.freaksoul.androidcalculator.MainActivity">
+    tools:context="com.example.freaksoul.androidcalculator.MainActivity"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="81dp">
 
     <RelativeLayout
-        android:layout_width="368dp"
-        android:layout_height="495dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1">
 
         <TextView
             android:id="@+id/textView1"
-            android:background="#986723"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="4dp"
-            android:textColor="#001100"
+            android:layout_alignParentEnd="true"
+            android:background="#986723"
             android:text="Result"
+            android:textColor="#001100"
             android:textSize="50dp" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/linearLayout2"
             android:layout_alignParentStart="true"
-            android:orientation="horizontal"
-            android:layout_above="@+id/linearLayout2">
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/buttonOne"
@@ -58,8 +70,8 @@
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_above="@+id/linearLayout3">
+            android:layout_above="@+id/linearLayout3"
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/buttonFour"
@@ -87,9 +99,9 @@
             android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/linearLayout4"
             android:layout_centerHorizontal="true"
-            android:orientation="horizontal"
-            android:layout_above="@+id/linearLayout4">
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/buttonSeven"
@@ -117,9 +129,9 @@
             android:id="@+id/linearLayout4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/linearLayout5"
             android:layout_alignParentEnd="true"
-            android:orientation="horizontal"
-            android:layout_above="@+id/linearLayout5">
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/buttonZero"
@@ -147,9 +159,9 @@
             android:id="@+id/linearLayout5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/linearLayout6"
             android:layout_alignParentEnd="true"
-            android:orientation="horizontal"
-            android:layout_above="@+id/linearLayout6">
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/buttonSum"
@@ -174,12 +186,12 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearLayout6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:orientation="horizontal"
-            android:id="@+id/linearLayout6">
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/TeamId"
