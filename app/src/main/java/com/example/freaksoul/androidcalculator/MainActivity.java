@@ -19,33 +19,22 @@ import static com.example.freaksoul.androidcalculator.R.id.textView1;
 
 public class MainActivity extends AppCompatActivity {
     TextView textView1;
-    Button zeroButton;
-    Button buttonOne;
-    Button buttonTwo;
-    Button buttonThree;
-    Button buttonFour;
-    Button buttonFive;
-    Button buttonSix;
-    Button buttonSeven;
-    Button buttonEight;
-    Button buttonNine;
-    Button buttonZero;
-    Button buttonMul;
-    Button buttonSum;
-    Button buttonDiff;
-    Button buttonDiv;
-    Button buttonResult;
-    Button buttonClear;
+    Button buttonOne, buttonTwo, buttonThree, buttonFour, buttonFive, buttonSix, buttonSeven, buttonEight, buttonNine, buttonZero;
+    Button buttonMul, buttonSum, buttonDiff, buttonDiv, buttonResult, buttonClear;
     String buttonValue = "";
-    float value1;
-    float value2;
+    Double Answer;
+    Double val1 = 0.0;
+    Double val2 = 0.0;
+    String Sign;
+    boolean solved = false;
+    boolean solvedWithouEqu = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView1 = (TextView) findViewById(R.id.textView1);
-        zeroButton = (Button) findViewById(R.id.buttonZero);
+        buttonZero = (Button) findViewById(R.id.buttonZero);
         buttonOne = (Button) findViewById(R.id.buttonOne);
         buttonTwo = (Button) findViewById(R.id.buttonTwo);
         buttonThree = (Button) findViewById(R.id.buttonThree);
@@ -61,19 +50,253 @@ public class MainActivity extends AppCompatActivity {
         buttonDiv = (Button) findViewById(R.id.buttonDiv);
         buttonResult = (Button) findViewById(R.id.buttonResult);
         buttonClear = (Button) findViewById(R.id.buttonClear);
-        buttonOne.setOnClickListener(numberlistener);
-        buttonTwo.setOnClickListener(numberlistener);
-        buttonThree.setOnClickListener(numberlistener);
-        buttonFour.setOnClickListener(numberlistener);
-        buttonFive.setOnClickListener(numberlistener);
-        buttonSix.setOnClickListener(numberlistener);
-        buttonSeven.setOnClickListener(numberlistener);
-        buttonEight.setOnClickListener(numberlistener);
-        buttonNine.setOnClickListener(numberlistener);
-        zeroButton.setOnClickListener(numberlistener);
-    }
 
-    private View.OnClickListener numberlistener = new View.OnClickListener() {
+        buttonZero.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (solved == true || solvedWithouEqu == true) {
+                    textView1.setText("");
+                    solved = false;
+                    solvedWithouEqu = false;
+                }
+                textView1.setText(textView1.getText().toString() + buttonZero.getText().toString());
+            }
+        });
+        buttonOne.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (solved == true || solvedWithouEqu == true) {
+                    textView1.setText("");
+                    solved = false;
+                    solvedWithouEqu = false;
+                }
+                textView1.setText(textView1.getText().toString() + buttonOne.getText().toString());
+            }
+        });
+        buttonTwo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (solved == true || solvedWithouEqu == true) {
+                    textView1.setText("");
+                    solved = false;
+                    solvedWithouEqu = false;
+                }
+                textView1.setText(textView1.getText().toString() + buttonTwo.getText().toString());
+            }
+        });
+        buttonThree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (solved == true || solvedWithouEqu == true) {
+                    textView1.setText("");
+                    solved = false;
+                    solvedWithouEqu = false;
+                }
+                textView1.setText(textView1.getText().toString() + buttonThree.getText().toString());
+            }
+        });
+        buttonFour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (solved == true || solvedWithouEqu == true) {
+                    textView1.setText("");
+                    solved = false;
+                    solvedWithouEqu = false;
+                }
+                textView1.setText(textView1.getText().toString() + buttonFour.getText().toString());
+            }
+        });
+        buttonFive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (solved == true || solvedWithouEqu == true) {
+                    textView1.setText("");
+                    solved = false;
+                    solvedWithouEqu = false;
+                }
+                textView1.setText(textView1.getText().toString() + buttonFive.getText().toString());
+            }
+        });
+        buttonSix.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (solved == true || solvedWithouEqu == true) {
+                    textView1.setText("");
+                    solved = false;
+                    solvedWithouEqu = false;
+                }
+                textView1.setText(textView1.getText().toString() + buttonSix.getText().toString());
+            }
+        });
+        buttonSeven.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (solved == true || solvedWithouEqu == true) {
+                    textView1.setText("");
+                    solved = false;
+                    solvedWithouEqu = false;
+                }
+                textView1.setText(textView1.getText().toString() + buttonSeven.getText().toString());
+            }
+        });
+        buttonEight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (solved == true || solvedWithouEqu == true) {
+                    textView1.setText("");
+                    solved = false;
+                    solvedWithouEqu = false;
+                }
+                textView1.setText(textView1.getText().toString() + buttonEight.getText().toString());
+            }
+        });
+        buttonNine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (solved == true || solvedWithouEqu == true) {
+                    textView1.setText("");
+                    solved = false;
+                    solvedWithouEqu = false;
+                }
+                textView1.setText(textView1.getText().toString() + buttonNine.getText().toString());
+            }
+        });
+        buttonSum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    if (val2 == 0.0) {
+                        val1 = Double.parseDouble(textView1.getText().toString());
+                        textView1.setText("");
+                        Sign = "+";
+                        val2 = Double.parseDouble("1");
+                    } else {
+                        val1 = val1 + Double.parseDouble(textView1.getText().toString());
+                        textView1.setText(val1.toString());
+                        Sign = "+";
+                        solvedWithouEqu = true;
+                    }
+                } catch (Exception ex) {
+                    textView1.setText("0");
+                } finally {
+
+                }
+            }
+        });
+        buttonDiff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    if (val2 == 0.0) {
+                        val1 = Double.parseDouble(textView1.getText().toString());
+                        textView1.setText("");
+                        Sign = "-";
+                        val2 = Double.parseDouble("1");
+                    } else {
+                        val1 = val1 - Double.parseDouble(textView1.getText().toString());
+                        textView1.setText(val1.toString());
+                        Sign = "-";
+                        solvedWithouEqu = true;
+                    }
+                } catch (Exception ex) {
+                    textView1.setText("0");
+                } finally {
+
+                }
+
+            }
+        });
+        buttonClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textView1.setText("");
+                val2 = 0.0;
+                val1 = 0.0;
+            }
+        });
+        buttonMul.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    if (val2 == 0.0) {
+                        val1 = Double.parseDouble(textView1.getText().toString());
+                        textView1.setText("");
+                        Sign = "*";
+                        val2 = Double.parseDouble("1");
+                    } else {
+                        val1 = val1 * Double.parseDouble(textView1.getText().toString());
+                        textView1.setText(val1.toString());
+                        Sign = "*";
+                        solvedWithouEqu = true;
+                    }
+                } catch (Exception ex) {
+                    textView1.setText("0");
+                } finally {
+
+                }
+
+            }
+        });
+        buttonDiv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    if (val2 == 0.0) {
+                        val1 = Double.parseDouble(textView1.getText().toString());
+                        textView1.setText("");
+                        Sign = "/";
+                        val2 = Double.parseDouble("1");
+                    } else {
+                        val1 = val1 / Double.parseDouble(textView1.getText().toString());
+                        textView1.setText(val1.toString());
+                        Sign = "/";
+                        solvedWithouEqu = true;
+                    }
+                } catch (Exception ex) {
+                    textView1.setText("0");
+                } finally {
+
+                }
+
+            }
+        });
+        buttonResult.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    val2 = Double.parseDouble(textView1.getText().toString());
+                    switch (Sign) {
+                        case "+":
+                            Answer = val1 + val2;
+                            break;
+                        case "-":
+                            Answer = val1 - val2;
+                            break;
+                        case "*":
+                            Answer = val1 * val2;
+                            break;
+                        case "/":
+                            Answer = val1 / val2;
+                            break;
+                        default:
+                    }
+                    textView1.setText(String.format(Answer.toString()));
+                    val2 = 0.0;
+                    val1 = 0.0;
+                    solved = true;
+                    Sign = "";
+                } catch (Exception ex) {
+                    textView1.setText("0");
+                } finally {
+
+                }
+
+            }
+        });
+    }
+}
+
+  /*  private View.OnClickListener numberlistener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Button sender = (Button) v;
@@ -81,6 +304,5 @@ public class MainActivity extends AppCompatActivity {
             textView1.setText(buttonValue);
             value1 = Float.parseFloat(buttonValue);
         }
-    };
-}
+    };*/
 
