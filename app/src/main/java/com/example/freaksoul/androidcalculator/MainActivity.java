@@ -1,5 +1,7 @@
 package com.example.freaksoul.androidcalculator;
 
+import android.os.Message;
+import android.os.Process;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
@@ -16,8 +18,10 @@ import org.w3c.dom.Text;
 import static com.example.freaksoul.androidcalculator.R.id.buttonFive;
 import static com.example.freaksoul.androidcalculator.R.id.buttonOne;
 import static com.example.freaksoul.androidcalculator.R.id.textView1;
+import android.os.Handler;
 
 public class MainActivity extends AppCompatActivity {
+
     TextView textView1;
     Button buttonOne, buttonTwo, buttonThree, buttonFour, buttonFive, buttonSix, buttonSeven, buttonEight, buttonNine, buttonZero;
     Button buttonMul, buttonSum, buttonDiff, buttonDiv, buttonResult, buttonClear;
@@ -28,6 +32,15 @@ public class MainActivity extends AppCompatActivity {
     String Sign;
     boolean solved = false;
     boolean solvedWithouEqu = false;
+
+    Handler handler= new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            Bundle b= msg.getData();
+            String key= b.getString("My Key");
+            textView1.setText(key);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,111 +67,237 @@ public class MainActivity extends AppCompatActivity {
         buttonZero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (solved == true || solvedWithouEqu == true) {
-                    textView1.setText("");
-                    solved = false;
-                    solvedWithouEqu = false;
-                }
-                textView1.setText(textView1.getText().toString() + buttonZero.getText().toString());
+                final Runnable runnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);
+                        if (solved == true || solvedWithouEqu == true) {
+                            textView1.setText("");
+                            solved = false;
+                            solvedWithouEqu = false;
+                        }
+                        Message msg= handler.obtainMessage();
+                        Bundle b= new Bundle();
+                        b.putString("My Key",textView1.getText().toString()+buttonZero.getText().toString());
+                        msg.setData(b);
+                        handler.sendMessage(msg);
+                    }
+
+                };
+                Thread thread= new Thread(runnable);
+                thread.start();
             }
         });
+
         buttonOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (solved == true || solvedWithouEqu == true) {
-                    textView1.setText("");
-                    solved = false;
-                    solvedWithouEqu = false;
-                }
-                textView1.setText(textView1.getText().toString() + buttonOne.getText().toString());
+                final Runnable runnable = new Runnable() {
+                    @Override
+                    public void run() {
+android.os.Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
+                        if (solved == true || solvedWithouEqu == true) {
+                            textView1.setText("");
+                            solved = false;
+                            solvedWithouEqu = false;
+                        }
+                        Message msg= new Message();
+                        Bundle b= new Bundle();
+                        b.putString("My Key",textView1.getText().toString()+buttonOne.getText().toString());
+                        msg.setData(b);
+                        handler.sendMessage(msg);
+                    }
+                };
+
+                Thread thread= new Thread(runnable);
+                thread.start();
             }
         });
         buttonTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (solved == true || solvedWithouEqu == true) {
-                    textView1.setText("");
-                    solved = false;
-                    solvedWithouEqu = false;
-                }
-                textView1.setText(textView1.getText().toString() + buttonTwo.getText().toString());
+                Runnable runnable= new Runnable() {
+                    @Override
+                    public void run() {
+                        android.os.Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
+                        if (solved == true || solvedWithouEqu == true) {
+                            textView1.setText("");
+                            solved = false;
+                            solvedWithouEqu = false;
+                        }
+                        Message msg= new Message();
+                        Bundle b= new Bundle();
+                        b.putString("My Key",textView1.getText().toString()+buttonTwo.getText().toString());
+                        msg.setData(b);
+                        handler.sendMessage(msg);
+                    }
+                };
+               Thread thread= new Thread(runnable);
+                thread.start();
             }
         });
         buttonThree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (solved == true || solvedWithouEqu == true) {
-                    textView1.setText("");
-                    solved = false;
-                    solvedWithouEqu = false;
-                }
-                textView1.setText(textView1.getText().toString() + buttonThree.getText().toString());
+                Runnable runnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        android.os.Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
+                        if (solved == true || solvedWithouEqu == true) {
+                            textView1.setText("");
+                            solved = false;
+                            solvedWithouEqu = false;
+                        }
+                       Message msg= new Message();
+                        Bundle b= new Bundle();
+                        b.putString("My Key",textView1.getText().toString()+ buttonThree.getText().toString());
+                        msg.setData(b);
+                        handler.sendMessage(msg);
+                    }
+                };
+                Thread thread= new Thread(runnable);
+                thread.start();
+
             }
         });
         buttonFour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (solved == true || solvedWithouEqu == true) {
-                    textView1.setText("");
-                    solved = false;
-                    solvedWithouEqu = false;
-                }
-                textView1.setText(textView1.getText().toString() + buttonFour.getText().toString());
+                Runnable runnable= new Runnable() {
+                    @Override
+                    public void run() {
+                        android.os.Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
+                        if (solved == true || solvedWithouEqu == true) {
+                            textView1.setText("");
+                            solved = false;
+                            solvedWithouEqu = false;
+                        }
+                       Message msg=new Message();
+                        Bundle b= new Bundle();
+                        b.putString("My Key",textView1.getText().toString()+buttonFour.getText().toString());
+                        msg.setData(b);
+                        handler.sendMessage(msg);
+                    }
+                };
+                Thread thread = new Thread(runnable);
+                thread.start();
+
             }
         });
         buttonFive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (solved == true || solvedWithouEqu == true) {
-                    textView1.setText("");
-                    solved = false;
-                    solvedWithouEqu = false;
-                }
-                textView1.setText(textView1.getText().toString() + buttonFive.getText().toString());
+                Runnable runnable= new Runnable() {
+                    @Override
+                    public void run() {
+                        android.os.Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
+                        if (solved == true || solvedWithouEqu == true) {
+                            textView1.setText("");
+                            solved = false;
+                            solvedWithouEqu = false;
+                        }
+                        Message msg= new Message();
+                        Bundle b= new Bundle();
+                        b.putString("My Key",textView1.getText().toString()+buttonFive.getText().toString());
+                        msg.setData(b);
+                        handler.sendMessage(msg);
+                    }
+                };
+                Thread thread= new Thread(runnable);
+                thread.start();
             }
         });
         buttonSix.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (solved == true || solvedWithouEqu == true) {
-                    textView1.setText("");
-                    solved = false;
-                    solvedWithouEqu = false;
-                }
-                textView1.setText(textView1.getText().toString() + buttonSix.getText().toString());
+                Runnable runnable= new Runnable() {
+                    @Override
+                    public void run() {
+                        android.os.Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
+                        if (solved == true || solvedWithouEqu == true) {
+                            textView1.setText("");
+                            solved = false;
+                            solvedWithouEqu = false;
+                        }
+                        Message msg= new Message();
+                        Bundle b= new Bundle();
+                        b.putString("My Key",textView1.getText().toString()+ buttonSix.getText().toString());
+                        msg.setData(b);
+                        handler.sendMessage(msg);
+                    }
+                };
+              Thread thred= new Thread(runnable);
+                thred.start();;
             }
         });
         buttonSeven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (solved == true || solvedWithouEqu == true) {
-                    textView1.setText("");
-                    solved = false;
-                    solvedWithouEqu = false;
-                }
-                textView1.setText(textView1.getText().toString() + buttonSeven.getText().toString());
+                Runnable runnable= new Runnable() {
+                    @Override
+                    public void run() {
+                        android.os.Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
+                        if (solved == true || solvedWithouEqu == true) {
+                            textView1.setText("");
+                            solved = false;
+                            solvedWithouEqu = false;
+                        }
+                        Message msg= new Message();
+                        Bundle b= new Bundle();
+                        b.putString("My Key",textView1.getText().toString()+buttonSeven.getText().toString());
+                        msg.setData(b);
+                        handler.sendMessage(msg);
+                    }
+                };
+                Thread thread= new Thread(runnable);
+                thread.start();
+
             }
         });
         buttonEight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (solved == true || solvedWithouEqu == true) {
-                    textView1.setText("");
-                    solved = false;
-                    solvedWithouEqu = false;
-                }
-                textView1.setText(textView1.getText().toString() + buttonEight.getText().toString());
+                Runnable runnable= new Runnable() {
+                    @Override
+                    public void run() {
+                        android.os.Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
+                        if (solved == true || solvedWithouEqu == true) {
+                            textView1.setText("");
+                            solved = false;
+                            solvedWithouEqu = false;
+                        }
+                        Message msg= new Message();
+                        Bundle b= new Bundle();
+                        b.putString("My Key",textView1.getText().toString()+buttonEight.getText().toString());
+                        msg.setData(b);
+                        handler.sendMessage(msg);
+                    }
+                };
+               Thread thread= new Thread(runnable);
+                thread.start();
             }
         });
         buttonNine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (solved == true || solvedWithouEqu == true) {
-                    textView1.setText("");
-                    solved = false;
-                    solvedWithouEqu = false;
-                }
-                textView1.setText(textView1.getText().toString() + buttonNine.getText().toString());
+                Runnable runnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        android.os.Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
+                        if (solved == true || solvedWithouEqu == true) {
+                            textView1.setText("");
+                            solved = false;
+                            solvedWithouEqu = false;
+                        }
+                        Message msg= new Message();
+                        Bundle b= new Bundle();
+                        b.putString("My Key",textView1.getText().toString()+buttonNine.getText().toString());
+                        msg.setData(b);
+                        handler.sendMessage(msg);
+                    }
+                };
+               Thread thread= new Thread(runnable);
+                thread.start();
             }
         });
         buttonSum.setOnClickListener(new View.OnClickListener() {
