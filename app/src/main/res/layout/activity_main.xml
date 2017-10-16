@@ -233,6 +233,16 @@
             android:layout_alignBottom="@+id/power"
             android:layout_centerHorizontal="true" />
 
+        <Button
+            android:id="@+id/buttonDot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/riza"
+            android:layout_alignBottom="@+id/riza"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:text="." />
+
 
     </RelativeLayout>
 

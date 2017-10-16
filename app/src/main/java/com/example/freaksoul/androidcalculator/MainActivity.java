@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView textView1;
     Button buttonOne, buttonTwo, buttonThree, buttonFour, buttonFive, buttonSix, buttonSeven, buttonEight, buttonNine, buttonZero;
-    Button buttonMul, buttonSum, buttonDiff, buttonDiv, buttonResult, buttonClear;
+    Button buttonMul, buttonSum, buttonDiff, buttonDiv, buttonResult, buttonClear, buttonDot;
 
 
     Button powerButton = null, rizaButton = null;
@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         buttonDiv = (Button) findViewById(R.id.buttonDiv);
         buttonResult = (Button) findViewById(R.id.buttonResult);
         buttonClear = (Button) findViewById(R.id.buttonClear);
+        buttonDot = (Button) findViewById(R.id.buttonDot);
         //Created by miltos kousoudis
         powerButton = (Button) findViewById(R.id.power);
         rizaButton = (Button) findViewById(R.id.riza);
@@ -433,6 +434,17 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
+            }
+        });
+        buttonDot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (solved == true || solvedWithouEqu == true) {
+                    textView1.setText("");
+                    solved = false;
+                    solvedWithouEqu = false;
+                }
+                textView1.setText(textView1.getText().toString() + buttonDot.getText().toString());
             }
         });
         buttonResult.setOnClickListener(new OnClickListener() {
