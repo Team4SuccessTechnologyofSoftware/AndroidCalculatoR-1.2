@@ -23,7 +23,9 @@
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1">
+        tools:layout_constraintTop_creator="1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/textView1"
@@ -210,6 +212,27 @@
                 android:layout_weight="0.14"
                 android:text="/" />
         </LinearLayout>
+
+
+        <Button
+            android:id="@+id/power"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/linearLayout"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="11dp"
+            android:layout_marginStart="11dp"
+            android:text="^2" />
+
+        <Button
+            android:id="@+id/riza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="√"
+            android:layout_alignBaseline="@+id/power"
+            android:layout_alignBottom="@+id/power"
+            android:layout_centerHorizontal="true" />
+
 
     </RelativeLayout>
 
