@@ -71,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
         buttonResult = (Button) findViewById(R.id.buttonResult);
         buttonClear = (Button) findViewById(R.id.buttonClear);
         buttonDot = (Button) findViewById(R.id.buttonDot);
-        //Created by miltos kousoudis
         powerButton = (Button) findViewById(R.id.power);
         rizaButton = (Button) findViewById(R.id.riza);
 
@@ -79,10 +78,28 @@ public class MainActivity extends AppCompatActivity {
         powerButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                val1 = Double.parseDouble(textView1.getText().toString());
-                val1 = val1 * val1;
-                textView1.setText(val1.toString());
-                Sign = "power";
+                final Runnable runnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
+                        if (solved == true || solvedWithouEqu == true) {
+                            textView1.setText("");
+                            solved = false;
+                            solvedWithouEqu = false;
+                        }
+                        val1 = Double.parseDouble(textView1.getText().toString());
+                        val1 = val1*val1;
+                        Sign = "riza";
+                        Message msg = handler.obtainMessage();
+                        Bundle b = new Bundle();
+                        b.putString("My Key", val1.toString());
+                        msg.setData(b);
+                        handler.sendMessage(msg);
+                    }
+                };
+                Thread thread = new Thread(runnable);
+                thread.start();
+
             }
 
         });
@@ -90,14 +107,30 @@ public class MainActivity extends AppCompatActivity {
         rizaButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                val1 = Double.parseDouble(textView1.getText().toString());
-                val1 = Math.sqrt(val1);
-                textView1.setText(val1.toString());
-                Sign = "riza";
-            }
+                final Runnable runnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
+                        if (solved == true || solvedWithouEqu == true) {
+                            textView1.setText("");
+                            solved = false;
+                            solvedWithouEqu = false;
+                        }
+                            val1 = Double.parseDouble(textView1.getText().toString());
+                            val1 = Math.sqrt(val1);
+                            Sign = "riza";
+                        Message msg = handler.obtainMessage();
+                        Bundle b = new Bundle();
+                        b.putString("My Key", val1.toString());
+                        msg.setData(b);
+                        handler.sendMessage(msg);
+                    }
+                };
+                Thread thread = new Thread(runnable);
+                thread.start();
 
-        });
-        //public int exponential(int base);//{
+        }
+                                      });
 
 
         buttonZero.setOnClickListener(new OnClickListener() {
